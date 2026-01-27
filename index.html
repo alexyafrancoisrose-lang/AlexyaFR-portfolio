@@ -1,0 +1,1914 @@
+<!doctype html>
+<html lang="fr" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alexya François-Rose | Data Analyst</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .app-wrapper {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #0a0015 0%, #1a0a2e 50%, #0f0020 100%);
+        }
+
+        .title-font {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        /* Neon glow effects */
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.4), 0 0 40px rgba(138, 43, 226, 0.2);
+        }
+
+        .neon-glow-strong {
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.6), 0 0 60px rgba(138, 43, 226, 0.4);
+        }
+
+        .text-neon {
+            text-shadow: 0 0 20px rgba(138, 43, 226, 0.8), 0 0 40px rgba(138, 43, 226, 0.4);
+        }
+
+        /* Cards with gradient and glow */
+        .card-dark {
+            background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 100%);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-dark:hover {
+            transform: translateY(-8px);
+            border-color: rgba(138, 43, 226, 0.8);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.5), 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Accordion styles */
+        .accordion-item {
+            background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 100%);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item.active {
+            border-color: rgba(138, 43, 226, 0.6);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .accordion-content.open {
+            max-height: 500px;
+        }
+
+        /* Counter animation */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .counter {
+            animation: countUp 0.8s ease-out forwards;
+        }
+
+        /* Skill bar */
+        .skill-bar {
+            height: 8px;
+            background: rgba(138, 43, 226, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #8a2be2, #9d4edd);
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
+            transition: width 1s ease-out;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .delay-3 { animation-delay: 0.3s; opacity: 0; }
+        .delay-4 { animation-delay: 0.4s; opacity: 0; }
+        .delay-5 { animation-delay: 0.5s; opacity: 0; }
+        .delay-6 { animation-delay: 0.6s; opacity: 0; }
+
+        /* Profile image with 3D effect */
+        .profile-card {
+            background: linear-gradient(135deg, #2d1b4e 0%, #1a0a2e 100%);
+            border: 2px solid rgba(138, 43, 226, 0.5);
+            position: relative;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(135deg, #8a2be2, #9d4edd);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.5;
+        }
+
+        /* Decorative line */
+        .deco-line {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #8a2be2, transparent);
+            margin: 0 auto 2rem;
+        }
+
+        /* Section label */
+        .section-label {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            background: rgba(138, 43, 226, 0.1);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        /* Timeline */
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #8a2be2;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.8);
+        }
+
+        /* Navigation */
+        .nav-item {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #8a2be2;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover::after,
+        .nav-item.active::after {
+            width: 100%;
+        }
+
+        .nav-item.active {
+            color: #8a2be2;
+        }
+
+        /* Page sections */
+        .page-section {
+            display: none;
+            opacity: 0;
+        }
+
+        .page-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        /* Button hover effect */
+        .btn-neon {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-neon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-neon:hover::before {
+            left: 100%;
+        }
+
+        .btn-neon:hover {
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.6), 0 0 40px rgba(138, 43, 226, 0.4);
+        }
+
+        /* Tech icon */
+        .tech-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(138, 43, 226, 0.1);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tech-icon:hover {
+            background: rgba(138, 43, 226, 0.2);
+            border-color: rgba(138, 43, 226, 0.6);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+        }
+
+        /* Case study carousel */
+        .case-study-card {
+            flex: 0 0 calc(33.333% - 16px);
+            background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 100%);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @media (max-width: 1023px) {
+            .case-study-card {
+                flex: 0 0 calc(50% - 12px);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .case-study-card {
+                flex: 0 0 100%;
+            }
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(138, 43, 226, 0.8);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.5), 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .case-study-image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: rgba(138, 43, 226, 0.1);
+            position: relative;
+        }
+
+        .case-study-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .case-study-card:hover .case-study-image {
+            transform: scale(1.1);
+        }
+
+        .case-study-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-center;
+            background: rgba(138, 43, 226, 0.05);
+        }
+
+        .case-study-title {
+            transition: color 0.3s ease;
+        }
+
+        .case-study-card:hover .case-study-title {
+            color: #8a2be2;
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app" class="app-wrapper"><!-- Navigation fixe -->
+   <nav class="sticky top-0 z-50 backdrop-blur-lg bg-black bg-opacity-40 border-b border-purple-900 border-opacity-30">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+     <div class="flex items-center justify-between">
+      <div class="text-xl font-bold title-font"><span id="nav-logo" class="text-purple-500">ALEXYA F-R</span>
+      </div>
+      <div class="hidden md:flex space-x-8 items-center"><a href="#" class="nav-item active text-gray-300 hover:text-purple-500 font-medium uppercase text-sm" data-page="accueil">Accueil</a> <a href="#" class="nav-item text-gray-300 hover:text-purple-500 font-medium uppercase text-sm" data-page="hobbies">Hobbies</a> <a href="#" class="nav-item text-gray-300 hover:text-purple-500 font-medium uppercase text-sm" data-page="etudes-cas">Études de cas</a> <a href="#" class="nav-item text-gray-300 hover:text-purple-500 font-medium uppercase text-sm" data-page="contact">Contact</a>
+       <div class="relative"><button id="lang-toggle" onclick="toggleLanguageMenu()" class="btn-neon bg-purple-600 bg-opacity-20 border border-purple-600 text-purple-400 px-4 py-2 rounded-lg font-semibold uppercase text-xs flex items-center gap-2"> <span class="text-lg">🌐</span> <span id="lang-text">LANGUES</span>
+         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+         </svg></button>
+        <div id="lang-menu" class="hidden absolute right-0 mt-2 w-40 bg-purple-900 bg-opacity-95 border border-purple-600 rounded-lg shadow-lg overflow-hidden z-50"><button onclick="selectLanguage('fr')" class="w-full px-4 py-3 text-left text-white hover:bg-purple-600 transition-colors flex items-center gap-2"> <span id="check-fr" class="text-purple-400">✓</span> <span>Français</span> </button> <button onclick="selectLanguage('en')" class="w-full px-4 py-3 text-left text-white hover:bg-purple-600 transition-colors flex items-center gap-2"> <span id="check-en" class="text-purple-400 opacity-0">✓</span> <span>English</span> </button>
+        </div>
+       </div>
+      </div><button id="mobile-menu-btn" class="md:hidden text-gray-300">
+       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg></button>
+     </div>
+     <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2"><a href="#" class="block py-2 nav-item active text-gray-300 uppercase text-sm" data-page="accueil">Accueil</a> <a href="#" class="block py-2 nav-item text-gray-300 uppercase text-sm" data-page="hobbies">Hobbies</a> <a href="#" class="block py-2 nav-item text-gray-300 uppercase text-sm" data-page="etudes-cas">Études de cas</a> <a href="#" class="block py-2 nav-item text-gray-300 uppercase text-sm" data-page="contact">Contact</a>
+      <div class="mt-2"><button onclick="toggleLanguageMenuMobile()" class="btn-neon w-full bg-purple-600 bg-opacity-20 border border-purple-600 text-purple-400 px-4 py-2 rounded-lg font-semibold uppercase text-xs flex items-center justify-center gap-2"> <span class="text-lg">🌐</span> <span id="lang-text-mobile">LANGUES</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg></button>
+       <div id="lang-menu-mobile" class="hidden mt-2 bg-purple-900 bg-opacity-95 border border-purple-600 rounded-lg overflow-hidden"><button onclick="selectLanguage('fr')" class="w-full px-4 py-3 text-left text-white hover:bg-purple-600 transition-colors flex items-center gap-2"> <span id="check-fr-mobile" class="text-purple-400">✓</span> <span>Français</span> </button> <button onclick="selectLanguage('en')" class="w-full px-4 py-3 text-left text-white hover:bg-purple-600 transition-colors flex items-center gap-2"> <span id="check-en-mobile" class="text-purple-400 opacity-0">✓</span> <span>English</span> </button>
+       </div>
+      </div>
+     </div>
+    </div>
+   </nav><!-- Page Accueil -->
+   <div id="page-accueil" class="page-section active"><!-- Hero Section -->
+    <section class="py-20 px-6">
+     <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-12 items-center"><!-- Photo de profil -->
+       <div class="md:col-span-1 flex justify-center fade-in-up">
+        <div class="profile-card rounded-3xl p-6 neon-glow">
+         <div class="w-64 h-80 bg-gradient-to-br from-purple-900 to-purple-700 rounded-2xl flex items-center justify-center">
+          <svg class="w-32 h-32 text-purple-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+         </div>
+        </div>
+       </div><!-- Contenu hero -->
+       <div class="md:col-span-2 fade-in-up delay-2">
+        <div class="section-label text-purple-400 uppercase">
+         Portfolio
+        </div>
+        <h1 id="hero-title" class="text-5xl md:text-6xl font-bold mb-4 text-white title-font text-neon">DATA ANALYST</h1>
+        <h2 id="hero-subtitle" class="text-2xl md:text-3xl mb-6 font-light text-purple-400">Stratégie E-business &amp; Intelligence Artificielle</h2>
+        <p id="hero-description" class="text-lg mb-8 leading-relaxed text-gray-300 max-w-2xl">Jeune diplômée en Stratégie E-business &amp; Data Analytique, je transforme les données en insights stratégiques pour propulser les entreprises innovantes.</p><!-- Compteurs -->
+        <div class="grid grid-cols-3 gap-6 mb-8">
+         <div class="text-center counter delay-3">
+          <div class="text-4xl font-bold title-font text-purple-400 text-neon mb-2">
+           2+
+          </div>
+          <div class="text-sm text-gray-400 uppercase tracking-wider">
+           Années d'expérience
+          </div>
+         </div>
+         <div class="text-center counter delay-4">
+          <div class="text-4xl font-bold title-font text-purple-400 text-neon mb-2">
+           10+
+          </div>
+          <div class="text-sm text-gray-400 uppercase tracking-wider">
+           Projets réalisés
+          </div>
+         </div>
+         <div class="text-center counter delay-5">
+          <div class="text-4xl font-bold title-font text-purple-400 text-neon mb-2">
+           5+
+          </div>
+          <div class="text-sm text-gray-400 uppercase tracking-wider">
+           Certifications
+          </div>
+         </div>
+        </div>
+        <div class="flex flex-wrap gap-4"><button class="btn-neon bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold uppercase text-sm neon-glow" onclick="showPage('contact')">Me contacter</button> <button class="btn-neon bg-purple-500 text-white px-8 py-3 rounded-lg font-semibold uppercase text-sm neon-glow flex items-center gap-2" onclick="showPage('cv-video')">
+          <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z" />
+          </svg> CV Vidéo </button> <a id="portfolio-link" href="https://alexyafrancoisrose9.wixsite.com/monsite/projects" target="_blank" rel="noopener noreferrer" class="btn-neon border-2 border-purple-600 text-purple-400 px-8 py-3 rounded-lg font-semibold uppercase text-sm">Mon portfolio</a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Experience & Education (Double colonne) -->
+    <section class="py-20 px-6">
+     <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12"><!-- My Experience -->
+       <div class="fade-in-up">
+        <div class="mb-8">
+         <div class="section-label text-purple-400 uppercase">
+          Parcours
+         </div>
+         <h2 class="text-3xl font-bold title-font text-white text-neon uppercase">My Experience</h2>
+        </div>
+        <div class="space-y-6"><!-- Exp 1 -->
+         <div class="timeline-item">
+          <div class="card-dark rounded-xl p-6">
+           <div class="text-sm text-purple-400 font-semibold mb-2">
+            2023 - Présent
+           </div>
+           <h3 class="text-lg font-bold text-white mb-2">Chargée de communication interne</h3>
+           <p class="text-sm text-gray-400 mb-3">France Travail - Alternance</p>
+           <ul class="text-sm text-gray-300 leading-relaxed space-y-2 list-disc list-inside">
+            <li>Pilotage du plan de communication Cyber national pour sensibiliser 55 000 agents</li>
+            <li>Création de contenus éditoriaux et visuels pour les plateformes internes (LumApps, SharePoint)</li>
+            <li>Analyse de données d'engagement et reporting mensuel avec Power BI</li>
+            <li>Coordination de campagnes multicanales (newsletters, affiches, vidéos)</li>
+            <li>Gestion de projets transverses et collaboration avec les équipes IT et RH</li>
+           </ul>
+          </div>
+         </div><!-- Exp 2 -->
+         <div class="timeline-item">
+          <div class="card-dark rounded-xl p-6">
+           <div class="text-sm text-purple-400 font-semibold mb-2">
+            2022 - 2023
+           </div>
+           <h3 class="text-lg font-bold text-white mb-2">Consultante E-commerce &amp; Data</h3>
+           <p class="text-sm text-gray-400 mb-3">Projets académiques IIM - Clients réels</p>
+           <ul class="text-sm text-gray-300 leading-relaxed space-y-2 list-disc list-inside">
+            <li>Audit et refonte de boutiques e-commerce (Shopify, PrestaShop)</li>
+            <li>��laboration de stratégies CRM et parcours client personnalisés</li>
+            <li>Optimisation SEO/SEA avec analyse de performance (Google Analytics, Search Console)</li>
+            <li>Création de tableaux de bord pour le suivi des KPIs e-commerce</li>
+            <li>Recommandations stratégiques basées sur l'analyse de données clients</li>
+           </ul>
+          </div>
+         </div><!-- Exp 3 -->
+         <div class="timeline-item">
+          <div class="card-dark rounded-xl p-6">
+           <div class="text-sm text-purple-400 font-semibold mb-2">
+            2021 - 2022
+           </div>
+           <h3 class="text-lg font-bold text-white mb-2">Chargée de transformation digitale</h3>
+           <p class="text-sm text-gray-400 mb-3">France Travail - Stage</p>
+           <ul class="text-sm text-gray-300 leading-relaxed space-y-2 list-disc list-inside">
+            <li>Participation au rebranding Pôle emploi → France Travail (communication interne)</li>
+            <li>Contribution à la refonte de l'intranet national (UX/UI, architecture de l'information)</li>
+            <li>Rédaction de contenus web et newsletters internes</li>
+            <li>Support à la conduite du changement digital auprès des équipes</li>
+            <li>Veille technologique et benchmarks des outils collaboratifs</li>
+           </ul>
+          </div>
+         </div>
+        </div>
+       </div><!-- My Education -->
+       <div class="fade-in-up delay-2">
+        <div class="mb-8">
+         <div class="section-label text-purple-400 uppercase">
+          Formation
+         </div>
+         <h2 class="text-3xl font-bold title-font text-white text-neon uppercase">My Education</h2>
+        </div>
+        <div class="space-y-6"><!-- Edu 1 -->
+         <div class="timeline-item">
+          <div class="card-dark rounded-xl p-6">
+           <div class="text-sm text-purple-400 font-semibold mb-2">
+            2023 - 2025
+           </div>
+           <h3 class="text-lg font-bold text-white mb-2">Master Data &amp; IA</h3>
+           <p class="text-sm text-gray-400 mb-3">IIM Digital School - Bac+5</p>
+           <ul class="text-sm text-gray-300 leading-relaxed space-y-2 list-disc list-inside">
+            <li>Spécialisation : Stratégie E-business &amp; Intelligence Artificielle</li>
+            <li>Data Science : Python, Machine Learning, Deep Learning, NLP</li>
+            <li>Business Intelligence : Power BI, Tableau, SQL avancé, Data Warehouse</li>
+            <li>Big Data : Spark, Hadoop, ETL, architectures cloud (AWS, Azure)</li>
+            <li>Gestion de projets data : méthodes Agile/Scrum, DataOps</li>
+            <li>Éthique et gouvernance des données, RGPD</li>
+           </ul>
+          </div>
+         </div><!-- Edu 2 -->
+         <div class="timeline-item">
+          <div class="card-dark rounded-xl p-6">
+           <div class="text-sm text-purple-400 font-semibold mb-2">
+            2020 - 2023
+           </div>
+           <h3 class="text-lg font-bold text-white mb-2">Bachelor E-business</h3>
+           <p class="text-sm text-gray-400 mb-3">IIM Digital School - Bac+3</p>
+           <ul class="text-sm text-gray-300 leading-relaxed space-y-2 list-disc list-inside">
+            <li>Communication Digitale et Stratégie E-business</li>
+            <li>Marketing digital : SEO/SEA, Social Media, Content Marketing</li>
+            <li>E-commerce : Shopify, PrestaShop, WordPress, WooCommerce</li>
+            <li>Data Analytics : Google Analytics, Excel avancé, visualisation de données</li>
+            <li>UX/UI Design : Figma, Adobe XD, wireframing et prototypage</li>
+            <li>Développement web : HTML/CSS, JavaScript, bases de données SQL</li>
+           </ul>
+          </div>
+         </div><!-- Edu 3 -->
+         <div class="timeline-item">
+          <div class="card-dark rounded-xl p-6">
+           <div class="text-sm text-purple-400 font-semibold mb-2">
+            2017 - 2020
+           </div>
+           <h3 class="text-lg font-bold text-white mb-2">Baccalauréat ES</h3>
+           <p class="text-sm text-gray-400 mb-3">Lycée Jean-Pierre Timbaud</p>
+           <ul class="text-sm text-gray-300 leading-relaxed space-y-2 list-disc list-inside">
+            <li>Mention Bien - Spécialité Économie et Sciences Sociales</li>
+            <li>Mathématiques appliquées et statistiques</li>
+            <li>Analyse économique et sociologique</li>
+            <li>Option anglais renforcé</li>
+           </ul>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Section Mes Compétences (Accordéon) -->
+    <section class="py-20 px-6">
+     <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 fade-in-up">
+       <div class="section-label text-purple-400 uppercase">
+        Services
+       </div>
+       <div class="deco-line"></div>
+       <h2 class="text-4xl font-bold title-font text-white text-neon uppercase">Mes Compétences</h2>
+      </div>
+      <div class="space-y-4"><!-- Compétence 1 -->
+       <div class="accordion-item rounded-xl fade-in-up delay-1"><button class="accordion-header w-full flex items-center justify-between p-6 text-left" onclick="toggleAccordion(this)">
+         <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-purple-600 bg-opacity-30 rounded-lg flex items-center justify-center"><span class="text-2xl font-bold title-font text-purple-400">01</span>
+          </div>
+          <h3 class="text-xl font-bold text-white uppercase">Analyse de données &amp; Business Intelligence</h3>
+         </div>
+         <svg class="w-6 h-6 text-purple-400 transition-transform accordion-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+         </svg></button>
+        <div class="accordion-content">
+         <div class="p-6 pt-0 pl-20 text-gray-300 leading-relaxed space-y-4">
+          <p class="font-semibold text-purple-300">Maîtrise complète du cycle de vie de la donnée :</p>
+          <ul class="space-y-2 list-disc list-inside">
+           <li><strong>Collecte &amp; Nettoyage :</strong> Extraction via API, web scraping (Python), nettoyage et transformation de données (ETL)</li>
+           <li><strong>Analyse statistique :</strong> Tests d'hypothèses, analyses de corrélation, segmentation clients (RFM, clustering)</li>
+           <li><strong>Visualisation :</strong> Création de tableaux de bord interactifs avec Power BI et Tableau pour le suivi de KPIs en temps réel</li>
+           <li><strong>SQL avancé :</strong> Requêtes complexes, jointures multiples, optimisation de bases de données</li>
+           <li><strong>Python pour la data :</strong> Pandas, NumPy, Matplotlib, Seaborn pour l'analyse exploratoire</li>
+           <li><strong>Reporting stratégique :</strong> Traduction d'insights techniques en recommandations business actionnables</li>
+          </ul>
+          <p class="text-sm italic text-gray-400">Projets : Analyse de campagnes marketing, prédiction de churn client, optimisation de processus internes</p>
+         </div>
+        </div>
+       </div><!-- Compétence 2 -->
+       <div class="accordion-item rounded-xl fade-in-up delay-2"><button class="accordion-header w-full flex items-center justify-between p-6 text-left" onclick="toggleAccordion(this)">
+         <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-purple-600 bg-opacity-30 rounded-lg flex items-center justify-center"><span class="text-2xl font-bold title-font text-purple-400">02</span>
+          </div>
+          <h3 class="text-xl font-bold text-white uppercase">Stratégie digitale &amp; E-business</h3>
+         </div>
+         <svg class="w-6 h-6 text-purple-400 transition-transform accordion-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+         </svg></button>
+        <div class="accordion-content">
+         <div class="p-6 pt-0 pl-20 text-gray-300 leading-relaxed space-y-4">
+          <p class="font-semibold text-purple-300">Stratégies data-driven pour la croissance digitale :</p>
+          <ul class="space-y-2 list-disc list-inside">
+           <li><strong>SEO/SEA :</strong> Audit technique, recherche de mots-clés, optimisation on-page/off-page, campagnes Google Ads</li>
+           <li><strong>CRM &amp; Marketing Automation :</strong> Segmentation avancée, parcours client personnalisés, A/B testing</li>
+           <li><strong>Analytics :</strong> Configuration et analyse Google Analytics 4, Tag Manager, suivi de conversions</li>
+           <li><strong>E-commerce :</strong> Optimisation du tunnel de conversion, stratégies de pricing, gestion de catalogue produits</li>
+           <li><strong>Social Media :</strong> Stratégie de contenu, community management, analyse de performance social media</li>
+           <li><strong>Growth Hacking :</strong> Tests d'hypothèses, optimisation du funnel AARRR (Acquisition, Activation, Rétention, Referral, Revenue)</li>
+          </ul>
+          <p class="text-sm italic text-gray-400">Résultats : +35% de trafic organique, +20% de taux de conversion sur projets clients</p>
+         </div>
+        </div>
+       </div><!-- Compétence 3 -->
+       <div class="accordion-item rounded-xl fade-in-up delay-3"><button class="accordion-header w-full flex items-center justify-between p-6 text-left" onclick="toggleAccordion(this)">
+         <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-purple-600 bg-opacity-30 rounded-lg flex items-center justify-center"><span class="text-2xl font-bold title-font text-purple-400">03</span>
+          </div>
+          <h3 class="text-xl font-bold text-white uppercase">Communication &amp; Gestion de projets</h3>
+         </div>
+         <svg class="w-6 h-6 text-purple-400 transition-transform accordion-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+         </svg></button>
+        <div class="accordion-content">
+         <div class="p-6 pt-0 pl-20 text-gray-300 leading-relaxed space-y-4">
+          <p class="font-semibold text-purple-300">Pilotage de projets et communication d'entreprise :</p>
+          <ul class="space-y-2 list-disc list-inside">
+           <li><strong>Gestion de projets digitaux :</strong> Méthodologies Agile/Scrum, planification sprint, roadmap produit</li>
+           <li><strong>Communication interne :</strong> Conception de plans de communication 360°, newsletters, intranets collaboratifs</li>
+           <li><strong>Création de contenu :</strong> Rédaction web, storytelling, production vidéo, infographies</li>
+           <li><strong>Conduite du changement :</strong> Formation des équipes, accompagnement transformation digitale</li>
+           <li><strong>Outils collaboratifs :</strong> LumApps, SharePoint, Slack, Trello, Asana, Monday.com</li>
+           <li><strong>Stakeholder management :</strong> Présentation de résultats, négociation, alignement multi-équipes</li>
+          </ul>
+          <p class="text-sm italic text-gray-400">Expérience : Campagne nationale touchant 55 000 collaborateurs chez France Travail</p>
+         </div>
+        </div>
+       </div><!-- Compétence 4 -->
+       <div class="accordion-item rounded-xl fade-in-up delay-4"><button class="accordion-header w-full flex items-center justify-between p-6 text-left" onclick="toggleAccordion(this)">
+         <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-purple-600 bg-opacity-30 rounded-lg flex items-center justify-center"><span class="text-2xl font-bold title-font text-purple-400">04</span>
+          </div>
+          <h3 class="text-xl font-bold text-white uppercase">Développement Web &amp; Design</h3>
+         </div>
+         <svg class="w-6 h-6 text-purple-400 transition-transform accordion-icon" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+         </svg></button>
+        <div class="accordion-content">
+         <div class="p-6 pt-0 pl-20 text-gray-300 leading-relaxed space-y-4">
+          <p class="font-semibold text-purple-300">Compétences techniques en développement et design :</p>
+          <ul class="space-y-2 list-disc list-inside">
+           <li><strong>Front-end :</strong> HTML5, CSS3, JavaScript (ES6+), responsive design, Bootstrap, Tailwind CSS</li>
+           <li><strong>CMS &amp; E-commerce :</strong> WordPress, Shopify, PrestaShop, WooCommerce - configuration et customisation</li>
+           <li><strong>UX/UI Design :</strong> Figma, Adobe XD - wireframing, prototyping, design systems</li>
+           <li><strong>Outils no-code :</strong> Webflow, Wix, intégrations API (Zapier, Make)</li>
+           <li><strong>Bases de données :</strong> SQL, MySQL, PostgreSQL - conception et requêtes</li>
+           <li><strong>Versioning :</strong> Git, GitHub pour la collaboration et le versioning de code</li>
+          </ul>
+          <p class="text-sm italic text-gray-400">Portfolio : Sites e-commerce, landing pages, applications web interactives</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Outils acquis -->
+    <section class="py-20 px-6 bg-black bg-opacity-30">
+     <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 fade-in-up">
+       <div class="section-label text-purple-400 uppercase">
+        Technologies
+       </div>
+       <div class="deco-line"></div>
+       <h2 class="text-4xl font-bold title-font text-white text-neon uppercase">Outils Acquis</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6"><!-- Python -->
+       <div class="fade-in-up delay-1">
+        <div class="tech-icon rounded-xl flex flex-col items-center justify-center p-4">
+         <svg class="w-12 h-12 text-purple-400 mb-2" fill="currentColor" viewbox="0 0 24 24"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z" />
+         </svg><span class="text-xs text-gray-400 font-semibold">Python</span>
+        </div>
+        <div class="skill-bar mt-2">
+         <div class="skill-progress" style="width: 75%"></div>
+        </div>
+       </div><!-- SQL -->
+       <div class="fade-in-up delay-2">
+        <div class="tech-icon rounded-xl flex flex-col items-center justify-center p-4">
+         <svg class="w-12 h-12 text-purple-400 mb-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+         </svg><span class="text-xs text-gray-400 font-semibold">SQL</span>
+        </div>
+        <div class="skill-bar mt-2">
+         <div class="skill-progress" style="width: 80%"></div>
+        </div>
+       </div><!-- Power BI -->
+       <div class="fade-in-up delay-3">
+        <div class="tech-icon rounded-xl flex flex-col items-center justify-center p-4">
+         <svg class="w-12 h-12 text-purple-400 mb-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+         </svg><span class="text-xs text-gray-400 font-semibold">Power BI</span>
+        </div>
+        <div class="skill-bar mt-2">
+         <div class="skill-progress" style="width: 85%"></div>
+        </div>
+       </div><!-- Excel -->
+       <div class="fade-in-up delay-4">
+        <div class="tech-icon rounded-xl flex flex-col items-center justify-center p-4">
+         <svg class="w-12 h-12 text-purple-400 mb-2" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+         </svg><span class="text-xs text-gray-400 font-semibold">Excel</span>
+        </div>
+        <div class="skill-bar mt-2">
+         <div class="skill-progress" style="width: 90%"></div>
+        </div>
+       </div><!-- HTML/CSS -->
+       <div class="fade-in-up delay-5">
+        <div class="tech-icon rounded-xl flex flex-col items-center justify-center p-4">
+         <svg class="w-12 h-12 text-purple-400 mb-2" fill="currentColor" viewbox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z" />
+         </svg><span class="text-xs text-gray-400 font-semibold">HTML/CSS</span>
+        </div>
+        <div class="skill-bar mt-2">
+         <div class="skill-progress" style="width: 70%"></div>
+        </div>
+       </div><!-- Figma -->
+       <div class="fade-in-up delay-6">
+        <div class="tech-icon rounded-xl flex flex-col items-center justify-center p-4">
+         <svg class="w-12 h-12 text-purple-400 mb-2" fill="currentColor" viewbox="0 0 24 24"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z" />
+         </svg><span class="text-xs text-gray-400 font-semibold">Figma</span>
+        </div>
+        <div class="skill-bar mt-2">
+         <div class="skill-progress" style="width: 65%"></div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div><!-- Page CV Vidéo -->
+   <div id="page-cv-video" class="page-section">
+    <section class="py-20 px-6 min-h-screen">
+     <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12 fade-in-up"><button class="mb-6 text-purple-400 hover:text-purple-300 flex items-center gap-2 mx-auto transition-colors" onclick="showPage('accueil')">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg> Retour à l'accueil </button>
+       <div class="section-label text-purple-400 uppercase">
+        Présentation
+       </div>
+       <div class="deco-line"></div>
+       <h2 class="text-4xl font-bold title-font text-white text-neon uppercase">Mon CV Vidéo</h2>
+       <p class="text-gray-300 mt-4 max-w-2xl mx-auto">Découvrez mon parcours et mes compétences en vidéo</p>
+      </div>
+      <div class="card-dark rounded-2xl p-8 fade-in-up delay-1">
+       <div class="space-y-6">
+        <div><label for="cv-video-url" class="block text-sm font-semibold text-gray-300 mb-2 uppercase">URL de la vidéo</label>
+         <div class="flex gap-3"><input type="url" id="cv-video-url" placeholder="https://www.youtube.com/watch?v=... ou Vimeo, Dailymotion" class="flex-1 px-4 py-3 bg-purple-900 bg-opacity-20 border border-purple-600 border-opacity-30 rounded-lg text-white focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all"> <button onclick="loadCvVideo()" class="btn-neon bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold uppercase text-sm neon-glow">Charger</button>
+         </div>
+         <p class="text-xs text-gray-400 mt-2">Formats supportés : YouTube, Vimeo, Dailymotion</p>
+        </div>
+        <div class="relative" style="padding-bottom: 56.25%; height: 0; overflow: hidden;"><iframe id="cv-video-frame" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+         <div id="cv-video-placeholder" class="absolute inset-0 bg-purple-900 bg-opacity-10 border-2 border-dashed border-purple-600 border-opacity-30 rounded-lg flex flex-col items-center justify-center">
+          <svg class="w-16 h-16 text-purple-400 mb-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+          <p class="text-gray-400 text-center">Collez l'URL de votre CV vidéo ci-dessus</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div><!-- Page Hobbies -->
+   <div id="page-hobbies" class="page-section">
+    <section class="py-20 px-6 min-h-screen">
+     <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 fade-in-up">
+       <div class="section-label text-purple-400 uppercase">
+        Passions
+       </div>
+       <div class="deco-line"></div>
+       <h2 class="text-4xl font-bold title-font text-white text-neon uppercase">Mes Hobbies</h2>
+      </div><!-- Projet MMY -->
+      <div class="card-dark rounded-2xl p-8 md:p-12 mb-12 fade-in-up">
+       <h3 class="text-3xl font-bold title-font text-purple-400 mb-6 text-neon">Projet MMY - Me, Myself and You</h3>
+       <div class="space-y-4 text-gray-300 leading-relaxed">
+        <p>Initiative médiatique combinant vidéos, photos et podcasts pour mettre en lumière les histoires inspirantes de jeunes des banlieues qui construisent un avenir meilleur.</p>
+        <p>À travers MMY, j'explore le développement personnel, la santé mentale et l'émancipation sociale pour inspirer les générations futures.</p>
+       </div><!-- Bouton vidéo de présentation -->
+       <div class="mt-6"><button class="btn-neon bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold uppercase text-sm neon-glow flex items-center gap-2 mx-auto" onclick="showPage('projet-video')">
+         <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z" />
+         </svg> Voir la vidéo de présentation </button>
+       </div><!-- Réseaux sociaux -->
+       <div class="mt-8 flex gap-6 flex-wrap justify-center"><a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" class="tech-icon rounded-xl flex flex-col items-center justify-center p-4 w-24 h-24">
+         <svg class="w-8 h-8 text-purple-400" fill="currentColor" viewbox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+         </svg><span class="text-xs text-gray-400 mt-2">TikTok</span> </a> <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="tech-icon rounded-xl flex flex-col items-center justify-center p-4 w-24 h-24">
+         <svg class="w-8 h-8 text-purple-400" fill="currentColor" viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+         </svg><span class="text-xs text-gray-400 mt-2">YouTube</span> </a> <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="tech-icon rounded-xl flex flex-col items-center justify-center p-4 w-24 h-24">
+         <svg class="w-8 h-8 text-purple-400" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+         </svg><span class="text-xs text-gray-400 mt-2">Instagram</span> </a>
+       </div>
+      </div><!-- Titre Ce que j'ai appris -->
+      <div class="text-center mb-12 fade-in-up">
+       <div class="section-label text-purple-400 uppercase">
+        Compétences acquises
+       </div>
+       <div class="deco-line"></div>
+       <h3 class="text-3xl font-bold title-font text-white text-neon uppercase">Ce que j'ai appris</h3>
+      </div><!-- Compétences développées -->
+      <div class="grid md:grid-cols-3 gap-6">
+       <div class="card-dark rounded-xl p-6 fade-in-up delay-1">
+        <div class="w-12 h-12 bg-purple-600 bg-opacity-30 rounded-lg flex items-center justify-center mb-4"><span class="text-2xl font-bold title-font text-purple-400">1</span>
+        </div>
+        <h4 class="text-xl font-bold text-white mb-4 uppercase">Stratégie de communication</h4>
+        <ul class="text-sm text-gray-300 leading-relaxed space-y-2 list-disc list-inside">
+         <li>Gestion de projets numériques et coordination d'équipes</li>
+         <li>Stratégies multicanales (réseaux sociaux, web, médias)</li>
+         <li>Analyse d'audience et segmentation</li>
+         <li>Planification éditoriale et calendrier de contenu</li>
+         <li>Gestion de communauté et engagement</li>
+         <li>Mesure de performance et reporting</li>
+        </ul>
+       </div>
+       <div class="card-dark rounded-xl p-6 fade-in-up delay-2">
+        <div class="w-12 h-12 bg-purple-600 bg-opacity-30 rounded-lg flex items-center justify-center mb-4"><span class="text-2xl font-bold title-font text-purple-400">2</span>
+        </div>
+        <h4 class="text-xl font-bold text-white mb-4 uppercase">Création de contenu</h4>
+        <ul class="text-sm text-gray-300 leading-relaxed space-y-2 list-disc list-inside">
+         <li>Production vidéo (tournage, montage, post-production)</li>
+         <li>Storytelling authentique et émotionnel</li>
+         <li>Photographie et retouche photo professionnelle</li>
+         <li>Podcasting (enregistrement, édition, diffusion)</li>
+         <li>Formats innovants adaptés aux plateformes</li>
+         <li>Copywriting et rédaction engageante</li>
+        </ul>
+       </div>
+       <div class="card-dark rounded-xl p-6 fade-in-up delay-3">
+        <div class="w-12 h-12 bg-purple-600 bg-opacity-30 rounded-lg flex items-center justify-center mb-4"><span class="text-2xl font-bold title-font text-purple-400">3</span>
+        </div>
+        <h4 class="text-xl font-bold text-white mb-4 uppercase">Impact social</h4>
+        <ul class="text-sm text-gray-300 leading-relaxed space-y-2 list-disc list-inside">
+         <li>Développement personnel et confiance en soi</li>
+         <li>Sensibilisation à la santé mentale</li>
+         <li>Émancipation sociale et rupture des stéréotypes</li>
+         <li>Engagement communautaire et mobilisation</li>
+         <li>Marque responsable avec valeurs authentiques</li>
+         <li>Advocacy et prise de parole publique</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div><!-- Page Projet MMY Vidéo -->
+   <div id="page-projet-video" class="page-section">
+    <section class="py-20 px-6 min-h-screen">
+     <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12 fade-in-up"><button class="mb-6 text-purple-400 hover:text-purple-300 flex items-center gap-2 mx-auto transition-colors" onclick="showPage('hobbies')">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg> Retour aux Hobbies </button>
+       <div class="section-label text-purple-400 uppercase">
+        Projet MMY
+       </div>
+       <div class="deco-line"></div>
+       <h2 class="text-4xl font-bold title-font text-white text-neon uppercase">Vidéo de Présentation</h2>
+       <p class="text-gray-300 mt-4 max-w-2xl mx-auto">Me, Myself and You - Initiative médiatique inspirante</p>
+      </div>
+      <div class="card-dark rounded-2xl p-8 fade-in-up delay-1">
+       <div class="space-y-6">
+        <div><label for="projet-video-url" class="block text-sm font-semibold text-gray-300 mb-2 uppercase">URL de la vidéo</label>
+         <div class="flex gap-3"><input type="url" id="projet-video-url" placeholder="https://www.youtube.com/watch?v=... ou Vimeo, Dailymotion" class="flex-1 px-4 py-3 bg-purple-900 bg-opacity-20 border border-purple-600 border-opacity-30 rounded-lg text-white focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all"> <button onclick="loadProjetVideo()" class="btn-neon bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold uppercase text-sm neon-glow">Charger</button>
+         </div>
+         <p class="text-xs text-gray-400 mt-2">Formats supportés : YouTube, Vimeo, Dailymotion</p>
+        </div>
+        <div class="relative" style="padding-bottom: 56.25%; height: 0; overflow: hidden;"><iframe id="projet-video-frame" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+         <div id="projet-video-placeholder" class="absolute inset-0 bg-purple-900 bg-opacity-10 border-2 border-dashed border-purple-600 border-opacity-30 rounded-lg flex flex-col items-center justify-center">
+          <svg class="w-16 h-16 text-purple-400 mb-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+          <p class="text-gray-400 text-center">Collez l'URL de votre vidéo de présentation ci-dessus</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div><!-- Page Études de cas -->
+   <div id="page-etudes-cas" class="page-section">
+    <section class="py-20 px-6 min-h-screen">
+     <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16 fade-in-up">
+       <div class="section-label text-purple-400 uppercase">
+        Portfolio
+       </div>
+       <div class="deco-line"></div>
+       <h2 class="text-4xl font-bold title-font text-white text-neon uppercase">Études de Cas</h2>
+       <p class="text-gray-300 mt-4 max-w-2xl mx-auto">Découvrez mes projets d'analyse de données et de stratégie digitale</p>
+      </div><!-- Carousel Container -->
+      <div class="relative fade-in-up delay-1"><!-- Carousel Track -->
+       <div class="overflow-hidden">
+        <div id="carousel-track" class="flex transition-transform duration-500 ease-out gap-6">
+         <div id="case-study-cards" class="flex gap-6"><!-- Cards will be injected by JavaScript -->
+         </div>
+        </div>
+       </div><!-- Navigation Arrows --> <button id="prev-btn" onclick="prevSlide()" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-purple-600 bg-opacity-80 hover:bg-opacity-100 rounded-full flex items-center justify-center transition-all neon-glow z-10">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg></button> <button id="next-btn" onclick="nextSlide()" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-purple-600 bg-opacity-80 hover:bg-opacity-100 rounded-full flex items-center justify-center transition-all neon-glow z-10">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg></button> <!-- Indicators -->
+       <div id="carousel-indicators" class="flex justify-center gap-2 mt-8"><!-- Dots will be injected by JavaScript -->
+       </div>
+      </div><!-- CTA Button -->
+      <div class="text-center mt-12 fade-in-up delay-2"><a href="https://alexyafrancoisrose9.wixsite.com/monsite/projects" target="_blank" rel="noopener noreferrer" class="btn-neon border-2 border-purple-600 text-purple-400 px-8 py-3 rounded-lg font-semibold uppercase text-sm inline-block">Voir tous mes projets</a>
+      </div>
+     </div>
+    </section>
+   </div><!-- Page Contact -->
+   <div id="page-contact" class="page-section">
+    <section class="py-20 px-6 min-h-screen">
+     <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16 fade-in-up">
+       <div class="section-label text-purple-400 uppercase">
+        Contact
+       </div>
+       <div class="deco-line"></div>
+       <h2 class="text-4xl font-bold title-font text-white text-neon uppercase">Travaillons ensemble !</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-12"><!-- Formulaire -->
+       <div class="fade-in-up">
+        <form id="contact-form" class="space-y-6" onsubmit="handleFormSubmit(event)">
+         <div><label for="contact-name" class="block text-sm font-semibold text-gray-300 mb-2 uppercase">Nom</label> <input type="text" id="contact-name" required class="w-full px-4 py-3 bg-purple-900 bg-opacity-20 border border-purple-600 border-opacity-30 rounded-lg text-white focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all">
+         </div>
+         <div><label for="contact-email-input" class="block text-sm font-semibold text-gray-300 mb-2 uppercase">Email</label> <input type="email" id="contact-email-input" required class="w-full px-4 py-3 bg-purple-900 bg-opacity-20 border border-purple-600 border-opacity-30 rounded-lg text-white focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all">
+         </div>
+         <div><label for="contact-subject" class="block text-sm font-semibold text-gray-300 mb-2 uppercase">Sujet</label> <input type="text" id="contact-subject" required class="w-full px-4 py-3 bg-purple-900 bg-opacity-20 border border-purple-600 border-opacity-30 rounded-lg text-white focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all">
+         </div>
+         <div><label for="contact-message" class="block text-sm font-semibold text-gray-300 mb-2 uppercase">Message</label> <textarea id="contact-message" rows="5" required class="w-full px-4 py-3 bg-purple-900 bg-opacity-20 border border-purple-600 border-opacity-30 rounded-lg text-white focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all resize-none"></textarea>
+         </div><button type="submit" class="btn-neon w-full bg-purple-600 text-white px-8 py-3 rounded-lg font-semibold uppercase text-sm neon-glow">Envoyer le message</button>
+        </form>
+        <div id="form-success" class="hidden mt-4 p-4 bg-purple-600 bg-opacity-20 border border-purple-500 rounded-lg text-purple-300 text-center">
+         Message envoyé avec succès ! Je vous répondrai rapidement.
+        </div>
+       </div><!-- Informations de contact -->
+       <div class="fade-in-up delay-2">
+        <div class="card-dark rounded-2xl p-8 space-y-8">
+         <div>
+          <h3 class="text-xl font-bold title-font text-purple-400 mb-6 uppercase">Informations de contact</h3>
+          <div class="space-y-6"><!-- Email -->
+           <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-purple-600 bg-opacity-30 rounded-lg flex items-center justify-center flex-shrink-0">
+             <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+             </svg>
+            </div>
+            <div>
+             <div class="text-sm text-gray-400 uppercase font-semibold mb-1">
+              Email
+             </div><a id="contact-email-link" href="mailto:alexyafrancoisrose@gmail.com" class="text-white hover:text-purple-400 break-all transition-colors">alexyafrancoisrose@gmail.com</a>
+            </div>
+           </div><!-- Téléphone -->
+           <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-purple-600 bg-opacity-30 rounded-lg flex items-center justify-center flex-shrink-0">
+             <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+             </svg>
+            </div>
+            <div>
+             <div class="text-sm text-gray-400 uppercase font-semibold mb-1">
+              Téléphone
+             </div><a id="contact-phone-link" href="tel:0763215007" class="text-white hover:text-purple-400 transition-colors">07 63 21 50 07</a>
+            </div>
+           </div><!-- Site web -->
+           <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-purple-600 bg-opacity-30 rounded-lg flex items-center justify-center flex-shrink-0">
+             <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+             </svg>
+            </div>
+            <div>
+             <div class="text-sm text-gray-400 uppercase font-semibold mb-1">
+              Portfolio
+             </div><a id="contact-website-link" href="https://alexyafrancoisrose9.wixsite.com/monsite/projects" target="_blank" rel="noopener noreferrer" class="text-white hover:text-purple-400 break-all transition-colors">Mon portfolio complet</a>
+            </div>
+           </div>
+          </div>
+         </div><!-- Réseaux sociaux -->
+         <div>
+          <h3 class="text-xl font-bold title-font text-purple-400 mb-4 uppercase">Réseaux sociaux</h3>
+          <div class="flex gap-4"><a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-purple-600 bg-opacity-30 rounded-lg flex items-center justify-center hover:bg-opacity-50 transition-all neon-glow">
+            <svg class="w-6 h-6 text-purple-400" fill="currentColor" viewbox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg></a> <a href="https://www.github.com" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-purple-600 bg-opacity-30 rounded-lg flex items-center justify-center hover:bg-opacity-50 transition-all neon-glow">
+            <svg class="w-6 h-6 text-purple-400" fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg></a>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div><!-- Footer -->
+   <footer class="border-t border-purple-900 border-opacity-30 py-8 px-6">
+    <div class="max-w-6xl mx-auto text-center">
+     <p class="text-gray-400 uppercase text-sm tracking-wider">© 2024 Alexya François-Rose - Tous droits réservés</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+        const defaultConfig = {
+            background_color: "#0a0015",
+            surface_color: "#1a0a2e",
+            text_color: "#ffffff",
+            primary_action_color: "#8a2be2",
+            secondary_action_color: "#9d4edd",
+            font_family: "Inter",
+            font_size: 16,
+            name: "Alexya François-Rose",
+            hero_title: "DATA ANALYST",
+            hero_subtitle: "Stratégie E-business & Intelligence Artificielle",
+            hero_description: "Jeune diplômée en Stratégie E-business & Data Analytique, je transforme les données en insights stratégiques pour propulser les entreprises innovantes.",
+            cv_video_url: "",
+            projet_video_url: "",
+            email: "alexyafrancoisrose@gmail.com",
+            phone: "07 63 21 50 07",
+            website: "https://alexyafrancoisrose9.wixsite.com/monsite/projects",
+            case_study_1_title: "Analyse prédictive du churn client",
+            case_study_1_description: "Modèle de Machine Learning (Random Forest) pour prédire le risque d'attrition client. Précision de 85% permettant de cibler les actions de rétention sur 2000+ clients.",
+            case_study_1_image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+            case_study_1_link: "https://alexyafrancoisrose9.wixsite.com/monsite/projects",
+            case_study_2_title: "Optimisation campagne marketing digital",
+            case_study_2_description: "Analyse multi-canal (Google Ads, Facebook, LinkedIn) avec attribution modeling. Résultats : +45% de trafic qualifié, +30% de conversions, ROI multiplié par 2,3.",
+            case_study_2_image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+            case_study_2_link: "https://alexyafrancoisrose9.wixsite.com/monsite/projects",
+            case_study_3_title: "Dashboard Power BI - KPIs RH",
+            case_study_3_description: "Tableau de bord interactif centralisant les indicateurs RH (turnover, absentéisme, recrutement). Automatisation complète du reporting mensuel pour la direction.",
+            case_study_3_image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+            case_study_3_link: "https://alexyafrancoisrose9.wixsite.com/monsite/projects",
+            case_study_4_title: "Segmentation clients e-commerce",
+            case_study_4_description: "Clustering K-means sur 30 000 clients pour personnaliser l'expérience d'achat. 5 segments identifiés avec stratégies marketing différenciées par profil.",
+            case_study_4_image: "https://images.unsplash.com/photo-1556155092-490a1ba16284?w=800&h=600&fit=crop",
+            case_study_4_link: "https://alexyafrancoisrose9.wixsite.com/monsite/projects",
+            case_study_5_title: "Automatisation reporting avec Python",
+            case_study_5_description: "Script ETL Python automatisant la collecte de données multi-sources (APIs, BDD, CSV) et génération de rapports hebdomadaires. Gain de 15h/mois.",
+            case_study_5_image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&h=600&fit=crop",
+            case_study_5_link: "https://alexyafrancoisrose9.wixsite.com/monsite/projects"
+        };
+
+        let currentLanguage = 'fr';
+
+        const translations = {
+            fr: {
+                nav: {
+                    home: 'Accueil',
+                    hobbies: 'Hobbies',
+                    caseStudies: 'Études de cas',
+                    contact: 'Contact'
+                },
+                hero: {
+                    label: 'Portfolio',
+                    title: 'DATA ANALYST',
+                    subtitle: 'Stratégie E-business & Intelligence Artificielle',
+                    description: 'Jeune diplômée en Stratégie E-business & Data Analytique, je transforme les données en insights stratégiques pour propulser les entreprises innovantes.',
+                    yearsExp: 'Années d\'expérience',
+                    projects: 'Projets réalisés',
+                    certifications: 'Certifications',
+                    contactBtn: 'Me contacter',
+                    cvVideoBtn: 'CV Vidéo',
+                    portfolioBtn: 'Mon portfolio'
+                },
+                experience: {
+                    label: 'Parcours',
+                    title: 'MY EXPERIENCE',
+                    job1: {
+                        period: '2023 - Présent',
+                        title: 'Chargée de communication interne',
+                        company: 'France Travail - Alternance'
+                    },
+                    job2: {
+                        period: '2022 - 2023',
+                        title: 'Consultante E-commerce & Data',
+                        company: 'Projets académiques IIM - Clients réels'
+                    },
+                    job3: {
+                        period: '2021 - 2022',
+                        title: 'Chargée de transformation digitale',
+                        company: 'France Travail - Stage'
+                    }
+                },
+                education: {
+                    label: 'Formation',
+                    title: 'MY EDUCATION',
+                    edu1: {
+                        period: '2023 - 2025',
+                        title: 'Master Data & IA',
+                        school: 'IIM Digital School - Bac+5'
+                    },
+                    edu2: {
+                        period: '2020 - 2023',
+                        title: 'Bachelor E-business',
+                        school: 'IIM Digital School - Bac+3'
+                    },
+                    edu3: {
+                        period: '2017 - 2020',
+                        title: 'Baccalauréat ES',
+                        school: 'Lycée Jean-Pierre Timbaud'
+                    }
+                },
+                skills: {
+                    label: 'Services',
+                    title: 'Mes Compétences',
+                    skill1: 'Analyse de données & Business Intelligence',
+                    skill2: 'Stratégie digitale & E-business',
+                    skill3: 'Communication & Gestion de projets',
+                    skill4: 'Développement Web & Design'
+                },
+                tools: {
+                    label: 'Technologies',
+                    title: 'Outils Acquis'
+                },
+                cvVideo: {
+                    backBtn: 'Retour à l\'accueil',
+                    label: 'Présentation',
+                    title: 'Mon CV Vidéo',
+                    description: 'Découvrez mon parcours et mes compétences en vidéo',
+                    urlLabel: 'URL de la vidéo',
+                    placeholder: 'https://www.youtube.com/watch?v=... ou Vimeo, Dailymotion',
+                    loadBtn: 'Charger',
+                    formats: 'Formats supportés : YouTube, Vimeo, Dailymotion',
+                    placeholderText: 'Collez l\'URL de votre CV vidéo ci-dessus'
+                },
+                hobbies: {
+                    label: 'Passions',
+                    title: 'Mes Hobbies',
+                    projectTitle: 'Projet MMY - Me, Myself and You',
+                    videoBtn: 'Voir la vidéo de présentation',
+                    learnedLabel: 'Compétences acquises',
+                    learnedTitle: 'Ce que j\'ai appris',
+                    skill1Title: 'Stratégie de communication',
+                    skill2Title: 'Création de contenu',
+                    skill3Title: 'Impact social'
+                },
+                projetVideo: {
+                    backBtn: 'Retour aux Hobbies',
+                    label: 'Projet MMY',
+                    title: 'Vidéo de Présentation',
+                    description: 'Me, Myself and You - Initiative médiatique inspirante'
+                },
+                caseStudies: {
+                    label: 'Portfolio',
+                    title: 'Études de Cas',
+                    description: 'Découvrez mes projets d\'analyse de données et de stratégie digitale',
+                    allProjectsBtn: 'Voir tous mes projets'
+                },
+                contact: {
+                    label: 'Contact',
+                    title: 'Travaillons ensemble !',
+                    nameLabel: 'Nom',
+                    emailLabel: 'Email',
+                    subjectLabel: 'Sujet',
+                    messageLabel: 'Message',
+                    sendBtn: 'Envoyer le message',
+                    successMsg: 'Message envoyé avec succès ! Je vous répondrai rapidement.',
+                    infoTitle: 'Informations de contact',
+                    emailTitle: 'Email',
+                    phoneTitle: 'Téléphone',
+                    websiteTitle: 'Portfolio',
+                    websiteText: 'Mon portfolio complet',
+                    socialTitle: 'Réseaux sociaux'
+                },
+                footer: {
+                    copyright: '© 2024 Alexya François-Rose - Tous droits réservés'
+                }
+            },
+            en: {
+                nav: {
+                    home: 'Home',
+                    hobbies: 'Hobbies',
+                    caseStudies: 'Case Studies',
+                    contact: 'Contact'
+                },
+                hero: {
+                    label: 'Portfolio',
+                    title: 'DATA ANALYST',
+                    subtitle: 'E-business Strategy & Artificial Intelligence',
+                    description: 'Recent graduate in E-business Strategy & Data Analytics, I transform data into strategic insights to drive innovative businesses forward.',
+                    yearsExp: 'Years of experience',
+                    projects: 'Completed projects',
+                    certifications: 'Certifications',
+                    contactBtn: 'Contact me',
+                    cvVideoBtn: 'Video CV',
+                    portfolioBtn: 'My portfolio'
+                },
+                experience: {
+                    label: 'Journey',
+                    title: 'MY EXPERIENCE',
+                    job1: {
+                        period: '2023 - Present',
+                        title: 'Internal Communication Manager',
+                        company: 'France Travail - Work-study program'
+                    },
+                    job2: {
+                        period: '2022 - 2023',
+                        title: 'E-commerce & Data Consultant',
+                        company: 'IIM Academic Projects - Real clients'
+                    },
+                    job3: {
+                        period: '2021 - 2022',
+                        title: 'Digital Transformation Manager',
+                        company: 'France Travail - Internship'
+                    }
+                },
+                education: {
+                    label: 'Education',
+                    title: 'MY EDUCATION',
+                    edu1: {
+                        period: '2023 - 2025',
+                        title: 'Master\'s Degree in Data & AI',
+                        school: 'IIM Digital School - Master\'s'
+                    },
+                    edu2: {
+                        period: '2020 - 2023',
+                        title: 'Bachelor\'s in E-business',
+                        school: 'IIM Digital School - Bachelor\'s'
+                    },
+                    edu3: {
+                        period: '2017 - 2020',
+                        title: 'High School Diploma in Economics',
+                        school: 'Jean-Pierre Timbaud High School'
+                    }
+                },
+                skills: {
+                    label: 'Services',
+                    title: 'My Skills',
+                    skill1: 'Data Analysis & Business Intelligence',
+                    skill2: 'Digital Strategy & E-business',
+                    skill3: 'Communication & Project Management',
+                    skill4: 'Web Development & Design'
+                },
+                tools: {
+                    label: 'Technologies',
+                    title: 'Acquired Tools'
+                },
+                cvVideo: {
+                    backBtn: 'Back to home',
+                    label: 'Presentation',
+                    title: 'My Video CV',
+                    description: 'Discover my background and skills in video',
+                    urlLabel: 'Video URL',
+                    placeholder: 'https://www.youtube.com/watch?v=... or Vimeo, Dailymotion',
+                    loadBtn: 'Load',
+                    formats: 'Supported formats: YouTube, Vimeo, Dailymotion',
+                    placeholderText: 'Paste your video CV URL above'
+                },
+                hobbies: {
+                    label: 'Passions',
+                    title: 'My Hobbies',
+                    projectTitle: 'MMY Project - Me, Myself and You',
+                    videoBtn: 'Watch presentation video',
+                    learnedLabel: 'Acquired skills',
+                    learnedTitle: 'What I learned',
+                    skill1Title: 'Communication Strategy',
+                    skill2Title: 'Content Creation',
+                    skill3Title: 'Social Impact'
+                },
+                projetVideo: {
+                    backBtn: 'Back to Hobbies',
+                    label: 'MMY Project',
+                    title: 'Presentation Video',
+                    description: 'Me, Myself and You - Inspiring media initiative'
+                },
+                caseStudies: {
+                    label: 'Portfolio',
+                    title: 'Case Studies',
+                    description: 'Discover my data analysis and digital strategy projects',
+                    allProjectsBtn: 'View all my projects'
+                },
+                contact: {
+                    label: 'Contact',
+                    title: 'Let\'s work together!',
+                    nameLabel: 'Name',
+                    emailLabel: 'Email',
+                    subjectLabel: 'Subject',
+                    messageLabel: 'Message',
+                    sendBtn: 'Send message',
+                    successMsg: 'Message sent successfully! I will reply shortly.',
+                    infoTitle: 'Contact information',
+                    emailTitle: 'Email',
+                    phoneTitle: 'Phone',
+                    websiteTitle: 'Portfolio',
+                    websiteText: 'My complete portfolio',
+                    socialTitle: 'Social media'
+                },
+                footer: {
+                    copyright: '© 2024 Alexya François-Rose - All rights reserved'
+                }
+            }
+        };
+
+        function toggleLanguageMenu() {
+            const menu = document.getElementById('lang-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function toggleLanguageMenuMobile() {
+            const menu = document.getElementById('lang-menu-mobile');
+            menu.classList.toggle('hidden');
+        }
+
+        function selectLanguage(lang) {
+            currentLanguage = lang;
+            updateLanguage();
+            
+            // Close menus
+            document.getElementById('lang-menu').classList.add('hidden');
+            document.getElementById('lang-menu-mobile').classList.add('hidden');
+            
+            // Update checkmarks
+            document.getElementById('check-fr').style.opacity = lang === 'fr' ? '1' : '0';
+            document.getElementById('check-en').style.opacity = lang === 'en' ? '1' : '0';
+            document.getElementById('check-fr-mobile').style.opacity = lang === 'fr' ? '1' : '0';
+            document.getElementById('check-en-mobile').style.opacity = lang === 'en' ? '1' : '0';
+        }
+
+        function updateLanguage() {
+            const t = translations[currentLanguage];
+            
+            // Update navigation
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems[0].textContent = t.nav.home;
+            navItems[1].textContent = t.nav.hobbies;
+            navItems[2].textContent = t.nav.caseStudies;
+            navItems[3].textContent = t.nav.contact;
+            navItems[4].textContent = t.nav.home;
+            navItems[5].textContent = t.nav.hobbies;
+            navItems[6].textContent = t.nav.caseStudies;
+            navItems[7].textContent = t.nav.contact;
+            
+            // Update hero section
+            document.querySelectorAll('.section-label')[0].textContent = t.hero.label.toUpperCase();
+            document.getElementById('hero-title').textContent = t.hero.title;
+            document.getElementById('hero-subtitle').textContent = t.hero.subtitle;
+            document.getElementById('hero-description').textContent = t.hero.description;
+            
+            // Update counters
+            const counters = document.querySelectorAll('.counter');
+            counters[0].querySelector('.text-sm').textContent = t.hero.yearsExp.toUpperCase();
+            counters[1].querySelector('.text-sm').textContent = t.hero.projects.toUpperCase();
+            counters[2].querySelector('.text-sm').textContent = t.hero.certifications.toUpperCase();
+            
+            // Update hero buttons
+            document.querySelectorAll('button[onclick*="contact"]')[0].textContent = t.hero.contactBtn;
+            document.querySelectorAll('button[onclick*="cv-video"]')[0].innerHTML = `
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+                ${t.hero.cvVideoBtn}
+            `;
+            document.getElementById('portfolio-link').textContent = t.hero.portfolioBtn;
+            
+            // Update experience section
+            const expSection = document.querySelectorAll('.section-label')[1];
+            if (expSection) expSection.textContent = t.experience.label.toUpperCase();
+            const expTitle = document.querySelectorAll('.text-3xl')[0];
+            if (expTitle) expTitle.textContent = t.experience.title;
+            
+            // Update education section
+            const eduSection = document.querySelectorAll('.section-label')[2];
+            if (eduSection) eduSection.textContent = t.education.label.toUpperCase();
+            const eduTitle = document.querySelectorAll('.text-3xl')[1];
+            if (eduTitle) eduTitle.textContent = t.education.title;
+            
+            // Update skills section
+            const skillsSection = document.querySelectorAll('.section-label')[3];
+            if (skillsSection) skillsSection.textContent = t.skills.label.toUpperCase();
+            const skillsTitle = document.querySelectorAll('.text-4xl')[1];
+            if (skillsTitle) skillsTitle.textContent = t.skills.title.toUpperCase();
+            
+            const skillHeaders = document.querySelectorAll('.accordion-header h3');
+            if (skillHeaders[0]) skillHeaders[0].textContent = t.skills.skill1.toUpperCase();
+            if (skillHeaders[1]) skillHeaders[1].textContent = t.skills.skill2.toUpperCase();
+            if (skillHeaders[2]) skillHeaders[2].textContent = t.skills.skill3.toUpperCase();
+            if (skillHeaders[3]) skillHeaders[3].textContent = t.skills.skill4.toUpperCase();
+            
+            // Update tools section
+            const toolsSection = document.querySelectorAll('.section-label')[4];
+            if (toolsSection) toolsSection.textContent = t.tools.label.toUpperCase();
+            const toolsTitle = document.querySelectorAll('.text-4xl')[2];
+            if (toolsTitle) toolsTitle.textContent = t.tools.title.toUpperCase();
+            
+            // Update CV Video page
+            const cvVideoPage = document.getElementById('page-cv-video');
+            if (cvVideoPage) {
+                cvVideoPage.querySelector('button[onclick*="accueil"]').innerHTML = `
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    ${t.cvVideo.backBtn}
+                `;
+                cvVideoPage.querySelectorAll('.section-label')[0].textContent = t.cvVideo.label.toUpperCase();
+                cvVideoPage.querySelectorAll('.text-4xl')[0].textContent = t.cvVideo.title.toUpperCase();
+                cvVideoPage.querySelector('p.text-gray-300').textContent = t.cvVideo.description;
+                cvVideoPage.querySelector('label[for="cv-video-url"]').textContent = t.cvVideo.urlLabel.toUpperCase();
+                cvVideoPage.querySelector('#cv-video-url').placeholder = t.cvVideo.placeholder;
+                cvVideoPage.querySelector('button[onclick="loadCvVideo()"]').textContent = t.cvVideo.loadBtn;
+                cvVideoPage.querySelectorAll('.text-xs')[0].textContent = t.cvVideo.formats;
+            }
+            
+            // Update Hobbies page
+            const hobbiesPage = document.getElementById('page-hobbies');
+            if (hobbiesPage) {
+                hobbiesPage.querySelectorAll('.section-label')[0].textContent = t.hobbies.label.toUpperCase();
+                hobbiesPage.querySelectorAll('.text-4xl')[0].textContent = t.hobbies.title.toUpperCase();
+                hobbiesPage.querySelector('button[onclick*="projet-video"]').innerHTML = `
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    ${t.hobbies.videoBtn}
+                `;
+                hobbiesPage.querySelectorAll('.section-label')[1].textContent = t.hobbies.learnedLabel.toUpperCase();
+                hobbiesPage.querySelectorAll('.text-3xl')[0].textContent = t.hobbies.learnedTitle.toUpperCase();
+                const hobbySkills = hobbiesPage.querySelectorAll('.text-xl');
+                if (hobbySkills[0]) hobbySkills[0].textContent = t.hobbies.skill1Title.toUpperCase();
+                if (hobbySkills[1]) hobbySkills[1].textContent = t.hobbies.skill2Title.toUpperCase();
+                if (hobbySkills[2]) hobbySkills[2].textContent = t.hobbies.skill3Title.toUpperCase();
+            }
+            
+            // Update Projet Video page
+            const projetVideoPage = document.getElementById('page-projet-video');
+            if (projetVideoPage) {
+                projetVideoPage.querySelector('button[onclick*="hobbies"]').innerHTML = `
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    ${t.projetVideo.backBtn}
+                `;
+                projetVideoPage.querySelectorAll('.section-label')[0].textContent = t.projetVideo.label.toUpperCase();
+                projetVideoPage.querySelectorAll('.text-4xl')[0].textContent = t.projetVideo.title.toUpperCase();
+                projetVideoPage.querySelector('p.text-gray-300').textContent = t.projetVideo.description;
+            }
+            
+            // Update Case Studies page
+            const caseStudiesPage = document.getElementById('page-etudes-cas');
+            if (caseStudiesPage) {
+                caseStudiesPage.querySelectorAll('.section-label')[0].textContent = t.caseStudies.label.toUpperCase();
+                caseStudiesPage.querySelectorAll('.text-4xl')[0].textContent = t.caseStudies.title.toUpperCase();
+                caseStudiesPage.querySelector('p.text-gray-300').textContent = t.caseStudies.description;
+                caseStudiesPage.querySelector('a.btn-neon').textContent = t.caseStudies.allProjectsBtn;
+            }
+            
+            // Update Contact page
+            const contactPage = document.getElementById('page-contact');
+            if (contactPage) {
+                contactPage.querySelectorAll('.section-label')[0].textContent = t.contact.label.toUpperCase();
+                contactPage.querySelectorAll('.text-4xl')[0].textContent = t.contact.title.toUpperCase();
+                contactPage.querySelector('label[for="contact-name"]').textContent = t.contact.nameLabel.toUpperCase();
+                contactPage.querySelector('label[for="contact-email-input"]').textContent = t.contact.emailLabel.toUpperCase();
+                contactPage.querySelector('label[for="contact-subject"]').textContent = t.contact.subjectLabel.toUpperCase();
+                contactPage.querySelector('label[for="contact-message"]').textContent = t.contact.messageLabel.toUpperCase();
+                contactPage.querySelector('button[type="submit"]').textContent = t.contact.sendBtn;
+                contactPage.querySelector('#form-success').textContent = t.contact.successMsg;
+                contactPage.querySelectorAll('.text-xl')[0].textContent = t.contact.infoTitle.toUpperCase();
+                const contactLabels = contactPage.querySelectorAll('.text-sm.text-gray-400.uppercase');
+                if (contactLabels[0]) contactLabels[0].textContent = t.contact.emailTitle;
+                if (contactLabels[1]) contactLabels[1].textContent = t.contact.phoneTitle;
+                if (contactLabels[2]) contactLabels[2].textContent = t.contact.websiteTitle;
+                contactPage.querySelector('#contact-website-link').textContent = t.contact.websiteText;
+                contactPage.querySelectorAll('.text-xl')[1].textContent = t.contact.socialTitle.toUpperCase();
+            }
+            
+            // Update footer
+            const footer = document.querySelector('footer p');
+            if (footer) footer.textContent = t.footer.copyright.toUpperCase();
+        }
+
+        // Navigation
+        function showPage(pageName) {
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(`page-${pageName}`);
+            if (targetPage) {
+                targetPage.classList.add('active');
+
+                document.querySelectorAll('.nav-item').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.dataset.page === pageName) {
+                        link.classList.add('active');
+                    }
+                });
+
+                document.getElementById('app').scrollTop = 0;
+            }
+        }
+
+        document.querySelectorAll('.nav-item').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageName = link.dataset.page;
+                showPage(pageName);
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Close language menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const langToggle = document.getElementById('lang-toggle');
+            const langMenu = document.getElementById('lang-menu');
+            if (langToggle && langMenu && !langToggle.contains(e.target) && !langMenu.contains(e.target)) {
+                langMenu.classList.add('hidden');
+            }
+        });
+
+        // Accordion toggle
+        function toggleAccordion(button) {
+            const item = button.parentElement;
+            const content = item.querySelector('.accordion-content');
+            const icon = button.querySelector('.accordion-icon');
+            const isOpen = content.classList.contains('open');
+
+            document.querySelectorAll('.accordion-content').forEach(c => {
+                c.classList.remove('open');
+            });
+            document.querySelectorAll('.accordion-item').forEach(i => {
+                i.classList.remove('active');
+            });
+            document.querySelectorAll('.accordion-icon').forEach(ic => {
+                ic.style.transform = 'rotate(0deg)';
+            });
+
+            if (!isOpen) {
+                content.classList.add('open');
+                item.classList.add('active');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Form submit
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const successMessage = document.getElementById('form-success');
+            
+            form.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+            
+            setTimeout(() => {
+                form.reset();
+                form.classList.remove('hidden');
+                successMessage.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Carousel functions
+        let currentSlide = 0;
+
+        function updateCarousel() {
+            const track = document.getElementById('carousel-track');
+            const cards = document.querySelectorAll('.case-study-card');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const indicators = document.getElementById('carousel-indicators');
+            
+            if (!track || cards.length === 0) return;
+            
+            let cardsToShow = 3;
+            if (window.innerWidth < 768) {
+                cardsToShow = 1;
+            } else if (window.innerWidth < 1024) {
+                cardsToShow = 2;
+            }
+            
+            const maxSlide = Math.max(0, cards.length - cardsToShow);
+            currentSlide = Math.min(currentSlide, maxSlide);
+            
+            const cardWidth = track.offsetWidth / cardsToShow;
+            const offset = -currentSlide * cardWidth;
+            track.style.transform = `translateX(${offset}px)`;
+            
+            if (prevBtn && nextBtn) {
+                prevBtn.disabled = currentSlide === 0;
+                nextBtn.disabled = currentSlide >= maxSlide;
+                
+                prevBtn.style.opacity = currentSlide === 0 ? '0.3' : '1';
+                nextBtn.style.opacity = currentSlide >= maxSlide ? '0.3' : '1';
+            }
+            
+            if (indicators) {
+                indicators.innerHTML = '';
+                for (let i = 0; i <= maxSlide; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = `w-2 h-2 rounded-full transition-all ${i === currentSlide ? 'bg-purple-500 w-8' : 'bg-purple-800'}`;
+                    dot.onclick = () => {
+                        currentSlide = i;
+                        updateCarousel();
+                    };
+                    indicators.appendChild(dot);
+                }
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateCarousel();
+            }
+        }
+
+        function nextSlide() {
+            const cards = document.querySelectorAll('.case-study-card');
+            let cardsToShow = 3;
+            if (window.innerWidth < 768) {
+                cardsToShow = 1;
+            } else if (window.innerWidth < 1024) {
+                cardsToShow = 2;
+            }
+            const maxSlide = Math.max(0, cards.length - cardsToShow);
+            
+            if (currentSlide < maxSlide) {
+                currentSlide++;
+                updateCarousel();
+            }
+        }
+
+        window.addEventListener('resize', updateCarousel);
+
+        // Video URL converter
+        function convertToEmbedUrl(url) {
+            if (!url) return null;
+            
+            // YouTube
+            let youtubeMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+            if (youtubeMatch) {
+                return `https://www.youtube.com/embed/${youtubeMatch[1]}`;
+            }
+            
+            // Vimeo
+            let vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
+            if (vimeoMatch) {
+                return `https://player.vimeo.com/video/${vimeoMatch[1]}`;
+            }
+            
+            // Dailymotion
+            let dailymotionMatch = url.match(/dailymotion\.com\/video\/([a-zA-Z0-9]+)/);
+            if (dailymotionMatch) {
+                return `https://www.dailymotion.com/embed/video/${dailymotionMatch[1]}`;
+            }
+            
+            return null;
+        }
+
+        // Load CV Video
+        function loadCvVideo() {
+            const input = document.getElementById('cv-video-url');
+            const frame = document.getElementById('cv-video-frame');
+            const placeholder = document.getElementById('cv-video-placeholder');
+            const url = input.value.trim();
+            
+            const embedUrl = convertToEmbedUrl(url);
+            if (embedUrl) {
+                frame.src = embedUrl;
+                frame.style.display = 'block';
+                placeholder.style.display = 'none';
+                
+                if (window.elementSdk) {
+                    window.elementSdk.setConfig({ cv_video_url: url });
+                }
+            } else {
+                placeholder.innerHTML = '<svg class="w-16 h-16 text-red-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><p class="text-red-400">URL invalide. Utilisez YouTube, Vimeo ou Dailymotion.</p>';
+            }
+        }
+
+        // Load Projet Video
+        function loadProjetVideo() {
+            const input = document.getElementById('projet-video-url');
+            const frame = document.getElementById('projet-video-frame');
+            const placeholder = document.getElementById('projet-video-placeholder');
+            const url = input.value.trim();
+            
+            const embedUrl = convertToEmbedUrl(url);
+            if (embedUrl) {
+                frame.src = embedUrl;
+                frame.style.display = 'block';
+                placeholder.style.display = 'none';
+                
+                if (window.elementSdk) {
+                    window.elementSdk.setConfig({ projet_video_url: url });
+                }
+            } else {
+                placeholder.innerHTML = '<svg class="w-16 h-16 text-red-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><p class="text-red-400">URL invalide. Utilisez YouTube, Vimeo ou Dailymotion.</p>';
+            }
+        }
+
+        // Element SDK
+        async function onConfigChange(config) {
+            const baseFont = config.font_family || defaultConfig.font_family;
+            const baseFontStack = 'Arial, sans-serif';
+            const customFont = `${baseFont}, ${baseFontStack}`;
+            const baseSize = config.font_size || defaultConfig.font_size;
+
+            const appWrapper = document.querySelector('.app-wrapper');
+            const bgColor = config.background_color || defaultConfig.background_color;
+            const surfaceColor = config.surface_color || defaultConfig.surface_color;
+            appWrapper.style.background = `linear-gradient(135deg, ${bgColor} 0%, ${surfaceColor} 50%, ${bgColor} 100%)`;
+
+            const textColor = config.text_color || defaultConfig.text_color;
+            document.querySelectorAll('.text-white').forEach(el => {
+                el.style.color = textColor;
+            });
+
+            const primaryColor = config.primary_action_color || defaultConfig.primary_action_color;
+            document.querySelectorAll('.text-purple-400, .text-purple-500').forEach(el => {
+                el.style.color = primaryColor;
+            });
+
+            document.querySelectorAll('.bg-purple-600').forEach(el => {
+                el.style.backgroundColor = primaryColor;
+            });
+
+            document.querySelectorAll('.border-purple-600, .border-purple-500').forEach(el => {
+                el.style.borderColor = primaryColor;
+            });
+
+            document.body.style.fontFamily = customFont;
+            document.querySelectorAll('.title-font').forEach(el => {
+                el.style.fontFamily = `'Roboto', ${customFont}`;
+            });
+
+            document.body.style.fontSize = `${baseSize}px`;
+            document.querySelectorAll('h1').forEach(el => {
+                el.style.fontSize = `${baseSize * 3}px`;
+            });
+            document.querySelectorAll('h2').forEach(el => {
+                el.style.fontSize = `${baseSize * 2}px`;
+            });
+            document.querySelectorAll('h3').forEach(el => {
+                el.style.fontSize = `${baseSize * 1.25}px`;
+            });
+
+            const nameEl = document.getElementById('nav-logo');
+            if (nameEl) nameEl.textContent = (config.name || defaultConfig.name).toUpperCase().replace(' ', ' ').substring(0, 12);
+
+            const heroTitleEl = document.getElementById('hero-title');
+            if (heroTitleEl) heroTitleEl.textContent = config.hero_title || defaultConfig.hero_title;
+
+            const heroSubtitleEl = document.getElementById('hero-subtitle');
+            if (heroSubtitleEl) heroSubtitleEl.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+
+            const heroDescEl = document.getElementById('hero-description');
+            if (heroDescEl) heroDescEl.textContent = config.hero_description || defaultConfig.hero_description;
+
+            const emailValue = config.email || defaultConfig.email;
+            const emailLink = document.getElementById('contact-email-link');
+            if (emailLink) {
+                emailLink.href = `mailto:${emailValue}`;
+                emailLink.textContent = emailValue;
+            }
+
+            const phoneValue = config.phone || defaultConfig.phone;
+            const phoneLink = document.getElementById('contact-phone-link');
+            if (phoneLink) {
+                phoneLink.href = `tel:${phoneValue.replace(/\s/g, '')}`;
+                phoneLink.textContent = phoneValue;
+            }
+
+            const websiteValue = config.website || defaultConfig.website;
+            const portfolioLink = document.getElementById('portfolio-link');
+            const websiteLink = document.getElementById('contact-website-link');
+            if (portfolioLink) portfolioLink.href = websiteValue;
+            if (websiteLink) websiteLink.href = websiteValue;
+
+            const cvVideoUrl = config.cv_video_url || defaultConfig.cv_video_url;
+            const cvVideoInput = document.getElementById('cv-video-url');
+            const cvVideoFrame = document.getElementById('cv-video-frame');
+            if (cvVideoInput && cvVideoUrl) {
+                cvVideoInput.value = cvVideoUrl;
+                const embedUrl = convertToEmbedUrl(cvVideoUrl);
+                if (embedUrl) {
+                    cvVideoFrame.src = embedUrl;
+                    cvVideoFrame.style.display = 'block';
+                    cvVideoInput.style.display = 'none';
+                }
+            }
+
+            const projetVideoUrl = config.projet_video_url || defaultConfig.projet_video_url;
+            const projetVideoInput = document.getElementById('projet-video-url');
+            const projetVideoFrame = document.getElementById('projet-video-frame');
+            if (projetVideoInput && projetVideoUrl) {
+                projetVideoInput.value = projetVideoUrl;
+                const embedUrl = convertToEmbedUrl(projetVideoUrl);
+                if (embedUrl) {
+                    projetVideoFrame.src = embedUrl;
+                    projetVideoFrame.style.display = 'block';
+                    projetVideoInput.style.display = 'none';
+                }
+            }
+
+            // Render case studies
+            const caseStudyCards = document.getElementById('case-study-cards');
+            if (caseStudyCards) {
+                caseStudyCards.innerHTML = '';
+                
+                for (let i = 1; i <= 5; i++) {
+                    const title = config[`case_study_${i}_title`] || defaultConfig[`case_study_${i}_title`] || '';
+                    const description = config[`case_study_${i}_description`] || defaultConfig[`case_study_${i}_description`] || '';
+                    const image = config[`case_study_${i}_image`] || defaultConfig[`case_study_${i}_image`] || '';
+                    const link = config[`case_study_${i}_link`] || defaultConfig[`case_study_${i}_link`] || '#';
+                    
+                    if (title && description) {
+                        const card = document.createElement('div');
+                        card.className = 'case-study-card cursor-pointer';
+                        card.onclick = () => window.open(link, '_blank', 'noopener,noreferrer');
+                        
+                        card.innerHTML = `
+                            <div class="case-study-image-container">
+                                ${image ? `<img src="${image}" alt="${title}" class="case-study-image" loading="lazy" onerror="this.src=''; this.style.display='none'; this.nextElementSibling.style.display='flex';">` : ''}
+                                <div class="case-study-placeholder" style="${image ? 'display:none;' : ''}">
+                                    <svg class="w-16 h-16 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-white mb-3 case-study-title">${title}</h3>
+                                <p class="text-sm text-gray-300 leading-relaxed">${description}</p>
+                            </div>
+                        `;
+                        
+                        caseStudyCards.appendChild(card);
+                    }
+                }
+                
+                updateCarousel();
+            }
+        }
+
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig: defaultConfig,
+                onConfigChange: onConfigChange,
+                mapToCapabilities: (config) => ({
+                    recolorables: [
+                        {
+                            get: () => config.background_color || defaultConfig.background_color,
+                            set: (value) => {
+                                config.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.surface_color || defaultConfig.surface_color,
+                            set: (value) => {
+                                config.surface_color = value;
+                                window.elementSdk.setConfig({ surface_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.text_color || defaultConfig.text_color,
+                            set: (value) => {
+                                config.text_color = value;
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                            set: (value) => {
+                                config.primary_action_color = value;
+                                window.elementSdk.setConfig({ primary_action_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                            set: (value) => {
+                                config.secondary_action_color = value;
+                                window.elementSdk.setConfig({ secondary_action_color: value });
+                            }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: {
+                        get: () => config.font_family || defaultConfig.font_family,
+                        set: (value) => {
+                            config.font_family = value;
+                            window.elementSdk.setConfig({ font_family: value });
+                        }
+                    },
+                    fontSizeable: {
+                        get: () => config.font_size || defaultConfig.font_size,
+                        set: (value) => {
+                            config.font_size = value;
+                            window.elementSdk.setConfig({ font_size: value });
+                        }
+                    }
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ["name", config.name || defaultConfig.name],
+                    ["hero_title", config.hero_title || defaultConfig.hero_title],
+                    ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+                    ["hero_description", config.hero_description || defaultConfig.hero_description],
+                    ["cv_video_url", config.cv_video_url || defaultConfig.cv_video_url],
+                    ["projet_video_url", config.projet_video_url || defaultConfig.projet_video_url],
+                    ["email", config.email || defaultConfig.email],
+                    ["phone", config.phone || defaultConfig.phone],
+                    ["website", config.website || defaultConfig.website],
+                    ["case_study_1_title", config.case_study_1_title || defaultConfig.case_study_1_title],
+                    ["case_study_1_description", config.case_study_1_description || defaultConfig.case_study_1_description],
+                    ["case_study_1_image", config.case_study_1_image || defaultConfig.case_study_1_image],
+                    ["case_study_1_link", config.case_study_1_link || defaultConfig.case_study_1_link],
+                    ["case_study_2_title", config.case_study_2_title || defaultConfig.case_study_2_title],
+                    ["case_study_2_description", config.case_study_2_description || defaultConfig.case_study_2_description],
+                    ["case_study_2_image", config.case_study_2_image || defaultConfig.case_study_2_image],
+                    ["case_study_2_link", config.case_study_2_link || defaultConfig.case_study_2_link],
+                    ["case_study_3_title", config.case_study_3_title || defaultConfig.case_study_3_title],
+                    ["case_study_3_description", config.case_study_3_description || defaultConfig.case_study_3_description],
+                    ["case_study_3_image", config.case_study_3_image || defaultConfig.case_study_3_image],
+                    ["case_study_3_link", config.case_study_3_link || defaultConfig.case_study_3_link],
+                    ["case_study_4_title", config.case_study_4_title || defaultConfig.case_study_4_title],
+                    ["case_study_4_description", config.case_study_4_description || defaultConfig.case_study_4_description],
+                    ["case_study_4_image", config.case_study_4_image || defaultConfig.case_study_4_image],
+                    ["case_study_4_link", config.case_study_4_link || defaultConfig.case_study_4_link],
+                    ["case_study_5_title", config.case_study_5_title || defaultConfig.case_study_5_title],
+                    ["case_study_5_description", config.case_study_5_description || defaultConfig.case_study_5_description],
+                    ["case_study_5_image", config.case_study_5_image || defaultConfig.case_study_5_image],
+                    ["case_study_5_link", config.case_study_5_link || defaultConfig.case_study_5_link]
+                ])
+            });
+        }
+
+        onConfigChange(defaultConfig);
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c4b2cb8057e6982',t:'MTc2OTU0NzU3NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
